@@ -1,0 +1,37 @@
+﻿model IEnumerable<AnnouncementWebAPI.Models.Announcement>
+
+    @{
+        ViewData["Title"] = "Ads";
+    }
+
+    <h1>Ads</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Add New Ad</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ad in Model)
+            {
+                <tr>
+                    <td>@ad.Title</td>
+                    <td>@ad.Description</td>
+                    <td>@ad.DateAdded.ToShortDateString()</td>
+                    <td>
+                        <a class="btn btn-info" asp-action="Details" asp-route-id="@ad.Id">View Details</a>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@ad.Id">Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@ad.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

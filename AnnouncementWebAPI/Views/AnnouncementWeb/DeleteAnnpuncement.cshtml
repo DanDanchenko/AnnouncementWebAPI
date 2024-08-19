@@ -1,0 +1,21 @@
+﻿@model AnnouncementWebAPI.Models.Announcement
+
+@{
+    ViewData["Title"] = "Delete Ad";
+}
+
+<h1>Delete Ad</h1>
+
+<h3>Are you sure you want to delete this ad?</h3>
+<div>
+    <h4>@Model.Title</h4>
+    <p>@Model.Description</p>
+    <p><strong>Date Added:</strong> @Model.DateAdded.ToShortDateString()</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-primary">Cancel</a>
+</form>
+
